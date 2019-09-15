@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+ <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+<head>
+	<title>주식 수익률 계산기</title>
+</head>
+
+<style>
+
+	.wrap{font-family: 'Noto Sans KR', sans-serif;}
+	
+
+
+
+	h2{font-weight: 900; padding-top: 20px; font-size: 20pt; background-color: black; height: 50px; border-top-right-radius:10px; border-top-left-radius: 10px; color: white;}
+	input{border: none; margin-bottom: 10px; border-radius: 3px;font-size: 20px; margin-left: 5px; margin-right: 5px;}
+
+	div{font-size: 15pt; color: white;}
+
+
+</style>
+
+<body>
+	<div id="wrap">
+
+			<div style="width: 400px; height: 550px;  font-weight: 500; margin: auto;  background-color: gray; text-align: center; border-radius: 10px;">
+
+				<h2>주식 수익률 계산기</h2>
+				<br>
+				<div style="font-size: 15pt;">매수단가<input type="number" id="buy">원</div>
+
+				<div style="height: 50px;"></div>
+
+				매도단가<input type="number" id="sell">원
+
+				<div style="height: 50px;"></div>
+
+				매도수량<input type="number" id="number1">주
+
+				<div style="height: 50px;"></div>
+
+				수수료<input type="number" id="tax">%
+
+			
+				
+
+				<br><br>
+				<input type="button" value="확인" id="but">
+				<br><br>
+
+
+				<div  style="width: 400px; height: 100px; padding-top: 30px; font-size: 30pt; background-color: orange; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+				">
+					<div style="font-size: 20pt;" id="monitor" ></div>
+					<div id="monitor2"></div>
+				</div>
+
+
+			</div>
+
+			
+
+
+
+
+
+
+		<script type="text/javascript">
+			buy.oninput = function(){}
+			
+
+
+
+			but.onclick = function(){
+				var bu1 = buy.value;
+				var se1 = sell.value;
+				var nu1 = number1.value;
+				var ta1 = tax.value;
+
+				var result1 = (se1 - bu1) * nu1;
+				var result2 = ((bu1 * nu1) * ta1)/100;
+				var result3 = ((bu1 * nu1) * 0.003);
+				var result4 = result1 - (result2 + result3);
+				var result5 = (result4 / (bu1 * nu1) * 100);
+
+		    //
+
+			monitor.innerHTML =  "총손익:" + Math.floor(result4)+"원";
+			
+			// 순이익 / 매수금액 * 100
+			monitor2.innerHTML = "수익률:" +(result5.toFixed(2))+"%";
+
+			}
+			
+
+
+		</script>
+
+
+
+
+	</div>
+	
+
+
+</body>
+<footer><p style="color: gray; text-align: center; padding-top: 30px; font-size: 10pt;">copyright ⓒ2019 HKNU.YOHAN LIM</p></footer>
+
+</html>
